@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+    mediaDownloader - Result Page
+{% endblock %}
+
+{% block content%}
+    <h2>RESPONSE</h2>
+
+    [{{ datas['default']['extractor'] }}]
+    <p>{{ datas['default']['title'] }}</p>
+
+    <div class="thumbnail">
+        {% if datas['best']['thumbnail'] %}
+            <img src="{{ datas['best']['thumbnail'] }}" />
+        {% else %}
+            <img src="{{ datas['default']['thumbnail'] }}" />
+        {% endif %}
+    </div>
+
+    <div class="video">
+        <br>
+        <video width="500" controls>
+            <source src="{{ datas['best']['url'] }}">
+        </video>
+    </div>
+    
+    {% if datas['bestaudio'] != None %}
+        <div class="audio">
+            <br>
+            <audio controls>
+                <source src="{{ datas['bestaudio']['url'] }}">
+            </audio>
+        </div>
+    {% endif %}
+
+    <br>
+    <form action="/result" method="POST">
+        <button type="submit"> Back </button>
+    </form>
+
+    {% if debug %}
+        <br><br>
+            {{ datas }} 
+        <br><br>
+    {% endif %}
+{% endblock %}

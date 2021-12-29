@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    mediaDownloader - Downloader Page
+{% endblock %}
+
+{% block content%}
+    <h1>Let's get started!</h1>
+
+    <form action="/" method="POST">
+        <input name="searched-link" value="" placeholder="link here">
+        <button type="submit"> Search </button>
+    </form>
+{% endblock%}
